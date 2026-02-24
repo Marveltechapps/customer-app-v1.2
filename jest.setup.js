@@ -1,5 +1,9 @@
 // Jest setup file for Expo
-import 'react-native-gesture-handler/jestSetup';
+try {
+  require('react-native-gesture-handler/jestSetup');
+} catch (e) {
+  // Package not installed, skip setup
+}
 
 // Mock Expo modules
 jest.mock('expo-constants', () => ({

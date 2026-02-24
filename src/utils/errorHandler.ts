@@ -98,9 +98,9 @@ export const getUserFriendlyMessage = (error: AppError): string => {
 export const setupGlobalErrorHandler = (): void => {
   // Handle unhandled promise rejections
   if (typeof global !== 'undefined') {
-    const originalHandler = global.ErrorUtils?.getGlobalHandler?.();
+    const originalHandler = (global as any).ErrorUtils?.getGlobalHandler?.();
     
-    global.ErrorUtils?.setGlobalHandler?.((error: Error, isFatal?: boolean) => {
+    (global as any).ErrorUtils?.setGlobalHandler?.((error: Error, isFatal?: boolean) => {
       logger.error('Unhandled Error', error, { isFatal });
       
       // Call original handler if it exists

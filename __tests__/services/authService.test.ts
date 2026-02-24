@@ -2,7 +2,7 @@
  * Auth Service Tests
  */
 
-import { sendOTP, verifyOTP } from '../../src/services/auth/authService';
+import { sendOtp, verifyOtp } from '../../src/services/auth/authService';
 import { api } from '../../src/services/api/client';
 
 // Mock the API client
@@ -26,14 +26,13 @@ describe('Auth Service', () => {
 
       (api.post as jest.Mock).mockResolvedValue(mockResponse);
 
-      const result = await sendOTP({ phoneNumber: '9876543210' });
+      const result = await sendOtp('9876543210');
 
       expect(api.post).toHaveBeenCalledWith(
-        expect.stringContaining('/auth/login'),
-        { phoneNumber: '9876543210' },
-        { skipAuth: true }
+        expect.stringContaining('/auth/send-otp'),
+        { phoneNumber: '9876543210' }
       );
-      expect(result.data?.success).toBe(true);
+      expect(result.data?.sessionId).toBe('test-session-id');
     });
   });
 
@@ -43,7 +42,7 @@ describe('Auth Service', () => {
         success: true,
         data: {
           success: true,
-          token: 'test-token',
+          accessToken: 'test-token',
           refreshToken: 'test-refresh-token',
           user: {
             id: '1',
@@ -55,13 +54,10 @@ describe('Auth Service', () => {
 
       (api.post as jest.Mock).mockResolvedValue(mockResponse);
 
-      const result = await verifyOTP({
-        phoneNumber: '9876543210',
-        otp: '123456',
-      });
+      const result = await verifyOtp('test-session-id', '123456');
 
       expect(api.post).toHaveBeenCalled();
-      expect(result.data?.token).toBe('test-token');
+      expect(result.data?.accessToken).toBe('test-token');
     });
   });
 });

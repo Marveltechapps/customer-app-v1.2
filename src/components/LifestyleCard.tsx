@@ -9,6 +9,8 @@ export interface LifestyleItem {
   image: ImageSourcePropType;
   imagePosition: { x: number; y: number; width: number; height: number };
   titlePosition: { x: number; y: number; width: number };
+  /** When set, tap uses handleHomeLink(link); otherwise no navigation. */
+  link?: string;
 }
 
 interface LifestyleCardProps {

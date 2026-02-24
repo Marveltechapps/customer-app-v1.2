@@ -628,7 +628,7 @@ const OTPVerification: React.FC<OTPVerificationScreenProps> = () => {
                           ]}
                         >
                           <TextInput
-                            ref={(ref) => (inputRefs.current[index] = ref)}
+                            ref={(ref: TextInput | null) => { inputRefs.current[index] = ref; }}
                             style={[styles.otpInputText, responsiveStyles.otpInputText]}
                             value={digit}
                             onChangeText={(value) => handleOtpChange(value, index)}

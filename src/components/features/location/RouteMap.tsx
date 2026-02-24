@@ -396,11 +396,6 @@ const RouteMap: React.FC<RouteMapProps> = ({
         onMapReady={() => {
           logger.info('Map is ready');
         }}
-        onError={(error) => {
-          logger.error('MapView error', error);
-          setError('Map failed to load. Please check your internet connection.');
-          setErrorType('other');
-        }}
       >
         {currentLocation && (
           <Marker

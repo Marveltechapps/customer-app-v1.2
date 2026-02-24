@@ -99,10 +99,7 @@ const MainScreen: React.FC<MainScreenProps> = ({
   }
 
   return (
-    <CustomerSupport
-      onBackPress={handleMainBackPress}
-      onNavigateToLocation={handleLocationNavigation}
-    />
+    <CustomerSupport />
   );
 };
 

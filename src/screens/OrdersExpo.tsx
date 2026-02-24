@@ -90,7 +90,7 @@ export default function OrdersScreen() {
             style={[styles.filterButton, activeFilter === 'all' && styles.filterButtonActive]}
             onPress={() => setActiveFilter('all')}
           >
-            <Text style={[styles.filterButtonText, activeFilter === 'all' && styles.filterButtonTextActive]}>
+            <Text style={StyleSheet.flatten([styles.filterButtonText, activeFilter === 'all' && styles.filterButtonTextActive])}>
               All Orders
             </Text>
           </TouchableOpacity>
@@ -98,7 +98,7 @@ export default function OrdersScreen() {
             style={[styles.filterButton, activeFilter === 'delivered' && styles.filterButtonActive]}
             onPress={() => setActiveFilter('delivered')}
           >
-            <Text style={[styles.filterButtonText, activeFilter === 'delivered' && styles.filterButtonTextActive]}>
+            <Text style={StyleSheet.flatten([styles.filterButtonText, activeFilter === 'delivered' && styles.filterButtonTextActive])}>
               Delivered
             </Text>
           </TouchableOpacity>
@@ -106,7 +106,7 @@ export default function OrdersScreen() {
             style={[styles.filterButton, activeFilter === 'cancelled' && styles.filterButtonActive]}
             onPress={() => setActiveFilter('cancelled')}
           >
-            <Text style={[styles.filterButtonText, activeFilter === 'cancelled' && styles.filterButtonTextActive]}>
+            <Text style={StyleSheet.flatten([styles.filterButtonText, activeFilter === 'cancelled' && styles.filterButtonTextActive])}>
               Cancelled
             </Text>
           </TouchableOpacity>

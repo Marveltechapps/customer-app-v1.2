@@ -15,6 +15,7 @@ import NewDealsSection from '../components/sections/NewDealsSection';
 import FreshJuiceDealsSection from '../components/sections/FreshJuiceDealsSection';
 import BannerSection from '../components/sections/BannerSection';
 import OrganicTaglineSection from '../components/sections/OrganicTaglineSection';
+import SupportCenterSection from '../components/sections/SupportCenterSection';
 import FloatingCartBar from '../components/features/cart/FloatingCartBar';
 import ErrorBoundary from '../components/common/ErrorBoundary';
 import type { Product } from '../components/features/product/ProductCard';
@@ -42,6 +43,7 @@ const DEFAULT_SECTION_ORDER = [
   'fresh_juice',
   'deals_2',
   'organic_tagline',
+  'support_center',
 ] as const;
 const VALID_SECTION_KEYS = new Set<string>(DEFAULT_SECTION_ORDER);
 const MAX_SECTIONS = 20; // max sections for animation slots
@@ -139,6 +141,7 @@ export default function HomeScreen() {
             id: String(c._id ?? c.id),
             name: c.name ?? '',
             image: { uri: c.imageUrl || PLACEHOLDER_IMAGE_URI },
+            link: c.link ?? undefined,
           }))
         : undefined;
     const heroBanners = homeData?.heroBanners?.length > 0 ? homeData.heroBanners : undefined;
@@ -188,6 +191,7 @@ export default function HomeScreen() {
               image: { uri: item.imageUrl || PLACEHOLDER_IMAGE_URI },
               imagePosition: LIFESTYLE_DEFAULT_POSITION,
               titlePosition: LIFESTYLE_DEFAULT_TITLE_POSITION,
+              link: item.link ?? undefined,
             }))
         : undefined;
 
@@ -383,7 +387,7 @@ export default function HomeScreen() {
                 content = <DealsSection title={dealsSectionTitle} fetchProducts={fetchDealsProducts} />;
                 break;
               case 'wellbeing':
-                content = <WellbeingSection fetchProducts={fetchWellbeingProducts} />;
+                content = <WellbeingSection fetchProducts={fetchWellbeingProducts as any} />;
                 break;
               case 'greens_banner':
                 content = <GreensBanner image={promoGreensBanner} onPress={undefined} />;
@@ -405,6 +409,9 @@ export default function HomeScreen() {
                 break;
               case 'organic_tagline':
                 content = <OrganicTaglineSection tagline={organicTagline} icon={organicIconUrl ? { uri: organicIconUrl } : undefined} />;
+                break;
+              case 'support_center':
+                content = <SupportCenterSection />;
                 break;
               default:
                 break;

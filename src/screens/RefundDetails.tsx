@@ -135,7 +135,7 @@ const RefundDetails: React.FC = () => {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
-      <Header title={orderNumber} onBackPress={handleBackPress} />
+      <Header title={orderNumber} onBackPress={() => navigation.goBack()} />
       <ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}

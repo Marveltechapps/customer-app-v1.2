@@ -61,7 +61,7 @@ export const NetworkProvider: React.FC<{ children: React.ReactNode }> = ({ child
         return prevRoute;
       });
       isNavigatingRef.current = true;
-      navigationRef.current.navigate('NoInternet' as never);
+      (navigationRef.current.navigate as any)('NoInternet');
       setTimeout(() => {
         isNavigatingRef.current = false;
       }, 500);
@@ -113,7 +113,7 @@ export const NetworkProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
             setPreviousRoute((storedRoute) => {
               if (storedRoute && navigationRef.current) {
-                navigationRef.current.navigate(storedRoute.name as never, storedRoute.params as never);
+                (navigationRef.current.navigate as any)(storedRoute.name, storedRoute.params);
               } else if (navigationRef.current) {
                 navigationRef.current.reset({
                   index: 0,

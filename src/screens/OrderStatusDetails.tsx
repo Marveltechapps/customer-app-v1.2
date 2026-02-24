@@ -17,7 +17,7 @@
  * @format
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component, type ReactNode, type ErrorInfo } from 'react';
 import {
   View,
   Text,
@@ -61,6 +61,22 @@ interface OrderDetails {
     price: number;
     image?: string;
   }>;
+}
+
+class ErrorBoundary extends Component<
+  { fallback: ReactNode; children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    logger.error('ErrorBoundary caught', error, info as any);
+  }
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
 }
 
 // Dummy static data - Replace with API call later

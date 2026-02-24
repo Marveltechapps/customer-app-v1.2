@@ -42,7 +42,7 @@ const NoInternet: React.FC<NoInternetScreenProps> = () => {
 
   const navigateBack = () => {
     if (previousRoute) {
-      navigation.navigate(previousRoute.name as never, previousRoute.params as never);
+      (navigation.navigate as any)(previousRoute.name, previousRoute.params);
     } else {
       navigation.reset({
         index: 0,

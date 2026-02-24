@@ -20,7 +20,7 @@ export const requestInterceptor = (config: InternalAxiosRequestConfig): Internal
   }
 
   // Skip auth for certain endpoints
-  if (config.skipAuth) {
+  if ((config as any).skipAuth) {
     return config;
   }
 

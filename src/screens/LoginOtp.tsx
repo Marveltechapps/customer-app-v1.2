@@ -18,8 +18,8 @@ export default function LoginOtp() {
     setMessage(null);
     try {
       const resp = await sendOtp(phone);
-      if (resp && resp.sessionId) {
-        setSessionId(resp.sessionId);
+      if (resp && resp.data?.sessionId) {
+        setSessionId(resp.data.sessionId);
         setMessage('OTP sent. Check your messages.');
       } else {
         setMessage('Failed to send OTP');
@@ -42,7 +42,7 @@ export default function LoginOtp() {
       const resp = await verifyOtp(sessionId, otp);
       if (resp && resp.data && resp.data.accessToken) {
         // tokens saved by authService -> tokenManager
-        navigation.replace('MainTabs' as never);
+        (navigation as any).replace('MainTabs');
       } else {
         setMessage('Invalid OTP or verification failed.');
       }

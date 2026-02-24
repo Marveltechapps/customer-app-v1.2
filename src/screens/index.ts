@@ -2,10 +2,10 @@
 export * from './auth';
 
 // Onboarding screens
-export * from './onboarding';
+export * from './onboarding/index';
 
 // Home screens
-export * from './home';
+export * from './home/index';
 
 // Product screens
 export * from './products';
@@ -17,7 +17,7 @@ export * from './cart';
 export * from './orders';
 
 // Profile screens
-export * from './profile';
+export * from './profile/index';
 
 // Support screens
 export * from './support';

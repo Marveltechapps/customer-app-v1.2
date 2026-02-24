@@ -280,7 +280,6 @@ export default function SearchResultsScreen({
                     returnKeyType="search"
                     textAlignVertical="center"
                     numberOfLines={1}
-                    ellipsizeMode="tail"
                   />
                 </View>
 
@@ -440,8 +439,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     textAlignVertical: 'center', // Vertically center text
     includeFontPadding: false, // Remove extra font padding
-    numberOfLines: 1, // Single line, no wrapping
-    ellipsizeMode: 'tail', // Ellipsize if too long
   },
   clearButton: {
     width: 32,

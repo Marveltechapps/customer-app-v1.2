@@ -170,7 +170,6 @@ export default function SearchScreen({
                   returnKeyType="search"
                   textAlignVertical="center"
                   numberOfLines={1}
-                  ellipsizeMode="tail"
                 />
               </View>
 
@@ -258,7 +257,7 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     flexDirection: 'row',
-    justifyContent: 'stretch',
+    justifyContent: 'center',
     alignItems: 'center', // Center all items vertically
     alignSelf: 'stretch',
     backgroundColor: '#FFFFFF',
@@ -297,8 +296,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     textAlignVertical: 'center', // Vertically center text
     includeFontPadding: false, // Remove extra font padding
-    numberOfLines: 1, // Single line, no wrapping
-    ellipsizeMode: 'tail', // Ellipsize if too long
   },
   clearButton: {
     width: 32,

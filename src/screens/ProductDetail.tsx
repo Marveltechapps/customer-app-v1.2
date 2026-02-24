@@ -11,6 +11,7 @@ import {
   FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -28,7 +29,7 @@ import ProductCard, { Product } from '../components/features/product/ProductCard
 import ProductVariantModal, { ProductVariant } from '../components/features/product/ProductVariantModal';
 import FloatingCartBar from '../components/features/cart/FloatingCartBar';
 import { useCart } from '../contexts/CartContext';
-import { productService } from '../services/products/productService';
+import * as productService from '../services/products/productService';
 import { getApiErrorMessage } from '../services/api/types';
 
 // Dummy static data - ready for API replacement
@@ -264,7 +265,7 @@ export default function ProductDetailScreen({
   // Handle image scroll to update current index
   const handleImageScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollPosition = event.nativeEvent.contentOffset.x;
-    const { width: screenWidth } = getWindowDimensions();
+    const { width: screenWidth } = Dimensions.get('window');
     const index = Math.round(scrollPosition / screenWidth);
     setCurrentImageIndex(index);
   };

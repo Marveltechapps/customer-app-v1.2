@@ -26,7 +26,7 @@ export function getApiErrorMessage(err: unknown, fallback = 'Something went wron
   if (err == null) return fallback;
   const o = err as Record<string, unknown>;
   if (typeof o?.message === 'string' && o.message) return o.message;
-  const data = o?.response?.data as Record<string, unknown> | undefined;
+  const data = (o?.response as any)?.data as Record<string, unknown> | undefined;
   if (data && typeof data?.message === 'string' && data.message) return data.message;
   if (typeof o?.error === 'string' && o.error) return o.error;
   return fallback;

@@ -89,9 +89,7 @@ const Profile: React.FC = () => {
       // Show success modal
       setShowSuccessModal(true);
       
-      if (onUpdateSuccess) {
-        onUpdateSuccess();
-      }
+      navigation.navigate('ProfileUpdateSuccess' as any);
     } catch (error) {
       logger.error('Error updating profile', error);
     } finally {

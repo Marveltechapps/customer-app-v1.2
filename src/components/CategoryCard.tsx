@@ -57,7 +57,7 @@ export default function CategoryCard({ image, name, onPress, width }: CategoryCa
   return (
     <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
       <TouchableOpacity 
-        style={[styles.container, width && { width }]} 
+        style={[styles.container, width != null ? { width } : undefined]} 
         onPress={handlePress}
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}

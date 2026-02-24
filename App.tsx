@@ -87,8 +87,8 @@ const AppContent: React.FC = () => {
     >
       <NavigationContainer
         ref={(ref) => {
-          navigationRef.current = ref;
-          setNavigationRef(ref);
+          navigationRef.current = ref as NavigationContainerRef<RootStackParamList> | null;
+          setNavigationRef(ref as NavigationContainerRef<RootStackParamList> | null);
         }}
       >
         <ErrorBoundary

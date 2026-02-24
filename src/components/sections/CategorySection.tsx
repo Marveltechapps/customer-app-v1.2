@@ -5,11 +5,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import type { RootStackNavigationProp } from '../../types/navigation';
 import Text from '../common/Text';
 import CategoryCard from '../CategoryCard';
+import handleHomeLink from '../../utils/navigation/linkHandler';
 
 interface Category {
   id: string;
   name: string;
   image: any;
+  /** When set, tap opens this link (product:id, category:id, URL, or screen); else CategoryProducts */
+  link?: string;
 }
 
 interface CategorySectionProps {
@@ -42,17 +45,19 @@ export default function CategorySection({ title = 'Grocery & Kitchen', onCategor
     try {
       if (onCategoryPress) {
         onCategoryPress(categoryId);
-      } else {
-        // Find category name
-        const category = sourceCategories.find((cat) => cat.id === categoryId);
-        const categoryName = category?.name || 'Category';
-        navigation.navigate('CategoryProducts', {
-          categoryId,
-          categoryName: categoryName.replace(/\n/g, ' '), // Replace newlines with spaces
-        });
+        return;
       }
+      const category = sourceCategories.find((cat) => cat.id === categoryId);
+      if (category?.link) {
+        handleHomeLink(category.link, navigation);
+        return;
+      }
+      const categoryName = category?.name || 'Category';
+      navigation.navigate('CategoryProducts', {
+        categoryId,
+        categoryName: categoryName.replace(/\n/g, ' '),
+      });
     } catch (error) {
-      // Silently handle navigation errors
       console.warn('Error navigating to category:', error);
     }
   };

@@ -489,7 +489,6 @@ const Login: React.FC<LoginScreenProps> = ({ onLoginSuccess }) => {
                         textContentType="telephoneNumber"
                         textAlignVertical="center"
                         numberOfLines={1}
-                        ellipsizeMode="tail"
                         onFocus={() => setIsInputFocused(true)}
                         onBlur={() => setIsInputFocused(false)}
                         returnKeyType="done"

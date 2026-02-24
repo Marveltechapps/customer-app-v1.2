@@ -150,7 +150,7 @@ function Onboarding({ onComplete }: OnboardingProps) {
         ) as OnboardingPage[];
         setOnboardingPages(sortedPages);
         if (__DEV__) {
-          logger.info('Onboarding: loaded', sortedPages.length, 'pages from API');
+          logger.info(`Onboarding: loaded ${sortedPages.length} pages from API`);
         }
       } else {
         // Empty pages is valid: backend has no onboarding configured → skip to login

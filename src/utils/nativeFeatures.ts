@@ -25,7 +25,7 @@ export const isExpoGo = (): boolean => {
  */
 export const isDevelopmentBuild = (): boolean => {
   try {
-    return Constants.appOwnership === 'standalone' || Constants.appOwnership === 'guest';
+    return (Constants.appOwnership as string) === 'standalone' || (Constants.appOwnership as string) === 'guest';
   } catch {
     return false;
   }

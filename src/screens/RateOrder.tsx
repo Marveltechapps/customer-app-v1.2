@@ -55,9 +55,7 @@ const RateOrder: React.FC = () => {
   }, [orderId]);
 
   const handleBackPress = () => {
-    if (onBackPress) {
-      onBackPress();
-    }
+    navigation.goBack();
   };
 
   const handleStarPress = (starIndex: number) => {

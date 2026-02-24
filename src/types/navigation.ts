@@ -31,7 +31,7 @@ export type RootStackParamList = {
   Onboarding: undefined;
   NoInternet: undefined;
   Login: undefined;
-  OTPVerification: { phoneNumber: string };
+  OTPVerification: { phoneNumber: string; sessionId?: string };
   VerificationSuccess: undefined;
   MainTabs: {
     screen?: 'Home' | 'Categories' | 'Cart';
@@ -59,9 +59,10 @@ export type RootStackParamList = {
   SearchResults: { query: string };
   ProductDetail: { productId: string };
   CategoryProducts: { categoryId: string; categoryName: string };
-  BannerDetail: { title: string };
+  BannerDetail: { title: string; bannerId?: string };
   TinyTimmies: undefined;
   CategoriesExpo: undefined;
+  Cart: { appliedCoupon?: { code: string; discount: number } } | undefined;
 };
 
 // Refunds Stack - Nested navigation for refunds

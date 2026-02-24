@@ -34,7 +34,7 @@ export const isExpoGo = (): boolean => {
  */
 export const isDevelopmentBuild = (): boolean => {
   try {
-    return Constants.appOwnership === 'standalone' || Constants.appOwnership === 'guest';
+    return (Constants.appOwnership as string) === 'standalone' || (Constants.appOwnership as string) === 'guest';
   } catch (error) {
     return false;
   }
@@ -45,7 +45,7 @@ export const isDevelopmentBuild = (): boolean => {
  */
 export const isProductionBuild = (): boolean => {
   try {
-    return Constants.appOwnership === 'standalone';
+    return (Constants.appOwnership as string) === 'standalone';
   } catch (error) {
     return false;
   }

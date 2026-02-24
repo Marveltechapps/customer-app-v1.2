@@ -25,6 +25,6 @@ export * from './icons';
 // Direct exports for components that don't fit categories
 export { default as BackButton } from './BackButton';
 export { default as LogoutButton } from './LogoutButton';
-export { default as SectionImage } from './common/SectionImage';
-export { default as GreensBanner } from './common/GreensBanner';
+export { default as SectionImage } from './SectionImage';
+export { default as GreensBanner } from './GreensBanner';
 
